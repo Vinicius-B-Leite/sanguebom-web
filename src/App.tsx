@@ -21,7 +21,8 @@ const appRoute = createBrowserRouter([
     children: [
       {
         path: 'createquestions',
-        element: <CreateQuestion />
+        element: <CreateQuestion />,
+        index: true
       },
       {
         path: 'createbloodcollectors',
