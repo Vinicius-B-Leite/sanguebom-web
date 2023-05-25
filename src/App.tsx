@@ -20,9 +20,8 @@ const appRoute = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: 'createquestions',
+        path: '/',
         element: <CreateQuestion />,
-        index: true
       },
       {
         path: 'createbloodcollectors',

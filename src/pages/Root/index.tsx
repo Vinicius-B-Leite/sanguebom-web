@@ -6,7 +6,7 @@ import { useUser } from "../../context/authContext";
 const routes = [
     {
         label: 'Criar questão',
-        path: 'createquestions'
+        path: '/'
     },
     {
         label: 'Criar ponto de coleta',

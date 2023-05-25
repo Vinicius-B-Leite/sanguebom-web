@@ -10,7 +10,7 @@ type Props = {
 }
 const QuestionItem: React.FC<Props> = ({ item, onDelete, onEdit }) => {
     return (
-        <div className='flex flex-row justify-between border-t-2 border-black w-full whitespace-normal'>
+        <div className='flex flex-row justify-between border-t-2 border-black w-full whitespace-normal py-2'>
             <p className='text-black text-xl max-w-md break-words'>{item.questions}</p>
             <p className='text-black text-xl max-w-sm break-words'>{item.answare}</p>
             <div>
