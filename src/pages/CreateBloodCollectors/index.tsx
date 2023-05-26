@@ -18,9 +18,9 @@ function CreateBloodCollectors() {
 
 
     const handleSubmit = async () => {
-        setIsLoading(false)
+        setIsLoading(true)
 
-        if (!imageSelected) return
+        if (!imageSelected ) return
 
         const ext = imageSelected.name.substring(imageSelected.name.lastIndexOf('.') + 1)
 

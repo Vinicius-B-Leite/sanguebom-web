@@ -1,4 +1,4 @@
-import React, { useState , useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { AiFillLock, AiOutlineMail } from 'react-icons/ai';
@@ -18,7 +18,7 @@ const Login: React.FC = () => {
 
     const { mutate, isLoading, error } = useMutation({
         mutationFn: () => login(email, password),
-        onError: (err: AxiosError<{ message: string, code: string }>) => console.log(err),
+        onError: (err: AxiosError<{ message: string, code: string }>) => console.log(err.response.data),
         onSuccess: (res) => setUser(res)
     })
 
@@ -27,8 +27,8 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div className='flex flex-row'>
-            <div className={`flex flex-col justify-center items-center ${windowSize.current[0] > 740 ? 'w-1/3' : 'w-full'}  bg-white h-screen`}>
+        <div className='flex flex-row items-center justify-center sm:max-2xl:justify-between'>
+            <div className='flex flex-col w-full sm:w-2/3  md:max-2xl:w-4/12 justify-center items-center  bg-white h-screen'>
 
                 <h1 className='text-4xl font-bold py-5'>Login</h1>
                 <div className='w-60 h-0.5 bg-black'></div>
@@ -73,15 +73,12 @@ const Login: React.FC = () => {
 
             </div>
 
-            {
-                windowSize.current[0] > 740 &&
-                <div className='flex items-center justify-center w-2/3 h-screen bg-red-700'>
-                    <div className='bg-red-300 rounded-full'>
-                        <img src={Logo} alt="Logo sangue bom" />
-                    </div>
+            <div className='flex  items-center justify-center w-0  h-screen sm:w-full bg-red-700'>
+                <div className='bg-red-300 rounded-full'>
+                    <img src={Logo} alt="Logo sangue bom" />
                 </div>
-            }
-
+            </div>
+            
         </div>
     )
 }

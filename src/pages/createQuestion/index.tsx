@@ -67,20 +67,20 @@ function CreateQuestion() {
 
     return (
         <div className="bg-black">
-            <div className="p-20 bg-white ">
+            <div className=" p-2 sm:p-20  bg-white ">
                 <h2 className="text-2xl text-red-700 font-bold">Criar uma pergunta</h2>
                 <p className="text-black">/criarpergunta</p>
 
-                <div className="flex flex-col my-10 p-7 bg-red-100 rounded-md w-200">
+                <div className="flex flex-col my-10 p-10 bg-red-100 w-screen rounded-md sm:w-full md:w-[70rem]">
                     <h3 className="font-black font-semibold text-xl ">Dúvidas</h3>
                     <input
-                        className="ml-7 p-3 my-3 w-96 rounded-md  outline-0"
+                        className="sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0"
                         type="text"
                         placeholder="Informe a pergunta"
                         value={question}
                         onChange={ev => setQuestion(ev.target.value)} />
                     <input
-                        className="ml-7 p-3 my-2 w-96 rounded-md  outline-0"
+                        className="sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0"
                         type="text"
                         placeholder="Informe a resposta"
                         value={answare}
@@ -91,7 +91,7 @@ function CreateQuestion() {
                         {isLoading ? <Spinner /> : !!isEdit ? 'Editar' : 'Cadastrar'}</button>
                 </div>
             </div>
-            <div className='bg-white px-20'>
+            <div className='bg-white px-4 sm:px-20'>
                 <h2 className='text-red-500 text-2xl font-bold mb-7'>Dúvidas criadas</h2>
                 {
                     data?.map(item => <QuestionItem onEdit={handleEdit} onDelete={handleDelete} item={item} />)
