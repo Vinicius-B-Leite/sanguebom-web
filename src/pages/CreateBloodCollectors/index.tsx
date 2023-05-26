@@ -2,6 +2,8 @@ import { AiOutlineCloudUpload } from 'react-icons/ai'
 import '../createQuestion/style.css'
 import { useState } from 'react';
 import { api } from '../../api';
+import Spinner from '../../components/Spinner';
+import { useUser } from '../../context/authContext';
 
 function CreateBloodCollectors() {
 
@@ -15,28 +17,39 @@ function CreateBloodCollectors() {
     const [neighborhood, setneighborhood] = useState('')
 
     const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<undefined | { message: string, code: string }>(undefined)
 
+    const user = useUser()
 
     const handleSubmit = async () => {
+        if (!imageSelected || isLoading || !bloodCollectorName || !imageSelected || !email || !password || !phoneNumber || !street || !number || !neighborhood) return
+
         setIsLoading(true)
 
-        if (!imageSelected ) return
 
-        const ext = imageSelected.name.substring(imageSelected.name.lastIndexOf('.') + 1)
-
-        await api.postForm(
+        api.postForm(
             'bloodcollectors/create',
             {
                 email,
+                username: bloodCollectorName,
                 password,
                 phoneNumber,
                 adress: `${street} ${number} ${neighborhood}`,
-                avatar: {
-                    name: imageSelected?.name + '.' + ext,
-                    uri: URL.createObjectURL(imageSelected),
-                    type: imageSelected?.type,
+                avatar: imageSelected
+            },
+            {
+                headers: {
+                    Authorization: 'Bearer ' + user.user?.token
                 }
+            })  
+            .catch((err) => {
+                setError(err.response.data);
             })
+
+            .finally(() => {
+                setIsLoading(false)
+            })
+
     }
 
 
@@ -62,6 +75,9 @@ function CreateBloodCollectors() {
                             value={email}
                             onChange={ev => setEmail(ev.target.value)}
                         />
+                        {
+                            error && ['02', '13'].includes(error.code) && <p className='text-red-700'>{error.message}</p>
+                        }
                         <input
                             className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0'
                             placeholder="Senha"
@@ -69,7 +85,9 @@ function CreateBloodCollectors() {
                             value={password}
                             onChange={ev => setPassword(ev.target.value)}
                         />
-
+                        {
+                            error && ['03'].includes(error.code) && <p className='text-red-700'>{error.message}</p>
+                        }
                     </div>
                     <div className='ml-5 sm:ml-22'>
                         <h4 className='font-semibold text-lg my-3 '>Avatar</h4>
@@ -137,8 +155,8 @@ function CreateBloodCollectors() {
                     </div>
                 </div>
 
-                <button className='bg-red-600 w-52 my-10 mx-5 text-white font-semibold py-2 rounded-sm'>
-                    Cadastrar
+                <button onClick={handleSubmit} className=' flex justify-center items-center bg-red-600 w-52 my-10 mx-5 text-white font-semibold py-2 rounded-sm'>
+                    {isLoading ? <Spinner /> : 'Cadastrar'}
                 </button>
             </div>
         </div>
