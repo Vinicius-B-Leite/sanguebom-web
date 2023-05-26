@@ -41,29 +41,29 @@ function CreateBloodCollectors() {
 
 
     return (
-        <div className='py-10 px-20'>
+        <div className='w-screen  md:w-[70rem] p-4 sm:py-10 sm:px-20 '>
             <h1 className='text-3xl font-bold text-red-700' >Cadastrar ponto de coleta</h1>
             <h3 className='text-xl '>/cadastrar ponto</h3>
 
-            <div className='flex flex-col w-200 rounded-md p-5 bg-red-50 '>
-                <div className='flex flex-row  mt-5 '>
+            <div className='flex flex-col w-full sm:w-[45rem] md:w-[70rem] rounded-md p-2 bg-red-50  '>
+                <div className='flex flex-col sm:flex-row mt-5 '>
                     <div className='flex flex-col px-5'>
                         <h4 className='font-semibold text-lg my-3 '>Informações básicas</h4>
                         <input
-                            className='w-96 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                            className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0'
                             placeholder="Nome do ponto de coleta"
                             value={bloodCollectorName}
                             onChange={ev => setBloodCollectorName(ev.target.value)}
                             type="text" name="" id="" />
                         <input
-                            className='w-96 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                            className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0'
                             placeholder="Email"
                             type="email"
                             value={email}
                             onChange={ev => setEmail(ev.target.value)}
                         />
                         <input
-                            className='w-96 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                            className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0'
                             placeholder="Senha"
                             type="password"
                             value={password}
@@ -71,9 +71,9 @@ function CreateBloodCollectors() {
                         />
 
                     </div>
-                    <div className='ml-40'>
+                    <div className='ml-5 sm:ml-22'>
                         <h4 className='font-semibold text-lg my-3 '>Avatar</h4>
-                        <label className='flex overflow-hidden flex-col justify-center items-center text-red-700 cursor-pointer bg-white border-2 border-red-700 w-48 h-44 rounded-full' htmlFor="file-input">
+                        <label className='flex overflow-hidden flex-col justify-center items-center text-red-700 cursor-pointer bg-white border-2 border-red-700  w-48 h-44 rounded-full' htmlFor="file-input">
                             {
                                 imageSelected ?
                                     <img className='w-full h-full' src={URL.createObjectURL(imageSelected)} alt="" />
@@ -102,7 +102,7 @@ function CreateBloodCollectors() {
                 <div className=" px-5">
                     <h4 className='font-semibold text-lg my-3 '>Contato</h4>
                     <input
-                        className='w-96 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                        className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0'
                         placeholder="Telefone"
                         type="text"
                         value={phoneNumber}
@@ -112,23 +112,23 @@ function CreateBloodCollectors() {
 
                 <div className=" px-5">
                     <h4 className='font-semibold text-lg my-3 '>Endereço</h4>
-                    <div className='flex flex-row' >
+                    <div className='flex flex-col sm:flex-row' >
                         <input
-                            className='w-36 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                            className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0   '
                             placeholder="Rua"
                             type="text"
                             value={street}
                             onChange={ev => setStreet(ev.target.value)}
                         />
                         <input
-                            className='w-20 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                            className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0'
                             placeholder="Número"
                             type="text"
                             value={number}
                             onChange={ev => setNumber(ev.target.value)}
                         />
                         <input
-                            className='w-36 text-lg p-2 mt-3 outline-0 mx-4 rounded-md'
+                            className='sm:ml-7 p-3 my-3 sm:w-96 rounded-md  outline-0   '
                             placeholder="Bairro"
                             type="text"
                             value={neighborhood}
