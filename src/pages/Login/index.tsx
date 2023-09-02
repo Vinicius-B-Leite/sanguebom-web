@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { AiFillLock, AiOutlineMail } from 'react-icons/ai';
@@ -12,13 +12,12 @@ import { useUser } from '../../context/authContext';
 const Login: React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const windowSize = useRef([window.innerWidth, window.innerHeight]);
 
     const { setUser } = useUser()
 
     const { mutate, isLoading, error } = useMutation({
         mutationFn: () => login(email, password),
-        onError: (err: AxiosError<{ message: string, code: string }>) => console.log(err.response.data),
+        onError: (err: AxiosError<{ message: string, code: string }>) => console.log(err?.response?.data),
         onSuccess: (res) => setUser(res)
     })
 

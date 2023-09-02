@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './style.css'
-import { useMutation } from 'react-query';
 import { api } from '../../api';
 import { useUser } from '../../context/authContext';
 import QuestionItem from '../../components/QuestionItem';

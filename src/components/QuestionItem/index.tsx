@@ -1,6 +1,5 @@
 import React from 'react';
 import { QuestionType } from '../../pages/createQuestion';
-import { GiPencil } from 'react-icons/gi'
 import { BsTrash, BsPencil } from 'react-icons/bs'
 
 type Props = {

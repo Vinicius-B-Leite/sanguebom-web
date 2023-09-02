@@ -41,7 +41,17 @@ function CreateBloodCollectors() {
                 headers: {
                     Authorization: 'Bearer ' + user.user?.token
                 }
-            })  
+            })
+            .then(() => {
+                setBloodCollectorName('')
+                setImageSelected(undefined)
+                setEmail('')
+                setPassword('')
+                setPhoneNumber('')
+                setStreet('')
+                setNumber('')
+                setneighborhood('')
+            })
             .catch((err) => {
                 setError(err.response.data);
             })
